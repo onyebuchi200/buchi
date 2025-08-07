@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Son Enterprise | Water Production & Treatment Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --secondary: #0d47a1;
+            --accent: #4fc3f7;
+            --light: #e3f2fd;
+            --dark: #01579b;
+            --water: #29b6f6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+        
+        .navbar-brand span {
+            color: var(--water);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="40" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="4" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="70" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+        
+        .hero h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--water));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
+        }
+        
+        .section-title {
+            font-weight: 800;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--water));
+            border-radius: 2px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--light), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary);
+            font-size: 32px;
+        }
+        
+        .water-section {
+            background: linear-gradient(135deg, var(--light) 0%, #bbdefb 100%);
+            padding: 80px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 300px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 136, 229, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0d47a1 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), white);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .testimonials {
+            background: #f1f5f9;
+            padding: 80px 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin: 20px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .contact-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .contact-form {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-control {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-link {
+            color: #bbdefb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            color: white;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            margin-top: 40px;
+            color: #90caf9;
+        }
+        
+        .water-drop {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: rotate(45deg) translateY(0px); }
+            50% { transform: rotate(45deg) translateY(-20px); }
+        }
+        
+        .water-drop:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .water-drop:nth-child(2) { top: 60%; left: 80%; animation-delay: 2s; }
+        .water-drop:nth-child(3) { top: 40%; left: 90%; animation-delay: 4s; }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Royal Son<span> Enterprise</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="water-drop"></div>
+        <div class="water-drop"></div>
+        <div class="water-drop"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Pure Water Solutions for a Healthier Future</h1>
+                    <p>Royal Son Enterprise provides premium water production and advanced treatment solutions to ensure clean, safe, and healthy water for your family and business.</p>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-primary btn-lg">Get Water Delivered</button>
+                        <button class="btn btn-outline-light btn-lg">Learn More</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div style="width: 400px; height: 400px; margin: 0 auto; position: relative;">
+                        <div style="width: 300px; height: 300px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 50px auto 0; position: relative; overflow: hidden;">
+                            <div style="position: absolute; top: 20px; left: 20px; right: 20px; bottom: 20px; border: 3px solid rgba(255,255,255,0.2); border-radius: 50%;"></div>
+                            <div style="position: absolute; top: 50px; left: 50px; right: 50px; bottom: 50px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%;"></div>
+                            <div style="position: absolute; top: 80px; left: 80px; right: 80px; bottom: 80px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%;"></div>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255,255,255,0.5); border-radius: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Water Services</h2>
+                <p class="lead">Comprehensive water solutions for residential and commercial needs</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Pure Drinking Water</h3>
+                        <p>High-quality purified water produced through advanced filtration and purification processes, ensuring the safest drinking water for your family.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3>Water Treatment</h3>
+                        <p>Professional water treatment services to remove impurities, bacteria, and contaminants, making your water safe and pleasant to drink.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Home Delivery</h3>
+                        <p>Convenient doorstep delivery service with scheduled refills to ensure you never run out of clean, fresh water.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Commercial Solutions</h3>
+                        <p>Bulk water supply and treatment systems for businesses, offices, schools, and institutions with customized solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3>Maintenance</h3>
+                        <p>Regular maintenance and servicing of water treatment equipment to ensure optimal performance and longevity.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shower"></i>
+                        </div>
+                        <h3>Water Filtration</h3>
+                        <p>Advanced filtration systems to remove sediments, chlorine, and other impurities for crystal clear water quality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Gallery Section -->
+    <section id="gallery" class="water-section">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Water Gallery</h2>
+                <p class="lead">See our water production and treatment facilities</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/29b6f6/ffffff?text=Water+Pump+System" alt="Water Pump">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Water Pump System</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Water+Filter+Unit" alt="Water Filter">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Water Filter Unit</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/0d47a1/ffffff?text=Quality+Testing" alt="Water Testing">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Quality Testing</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/4fc3f7/ffffff?text=Delivery+Service" alt="Water Delivery">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Delivery Service</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/29b6f6/ffffff?text=Treatment+Plant" alt="Treatment Plant">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Treatment Plant</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/1e88e5/ffffff?text=Customer+Satisfaction" alt="Customer Satisfaction">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Happy Customers</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/0d47a1/ffffff?text=Advanced+Purification" alt="Advanced Purification">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Advanced Purification</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/4fc3f7/ffffff?text=Water+Storage" alt="Water Storage">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Water Storage</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/400x300/29b6f6/ffffff?text=RO+System" alt="RO System">
+                        <div class="gallery-overlay">
+                            <h5 class="text-white">Reverse Osmosis System</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="5000">0</div>
+                        <h4>Liters Produced Daily</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="1500">0</div>
+                        <h4>Happy Customers</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="50">0</div>
+                        <h4>Expert Team</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number" data-count="99">0</div>
+                        <h4>Water Quality %</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title">About Royal Son Enterprise</h2>
+                    <p class="lead">Your trusted partner for clean water solutions in Lagos State</p>
+                    <p>Royal Son Enterprise is a leading water production and treatment company based in Lagos State. We are committed to providing the highest quality water products and services to our customers through state-of-the-art technology and rigorous quality control.</p>
+                    <p>With years of experience in the water industry, our team of experts ensures that every drop of water we produce meets the highest safety and purity standards. We serve both residential and commercial clients with reliable, efficient, and affordable water solutions.</p>
+                    <div class="mt-4">
+                        <h5>Why Choose Us:</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Advanced purification technology</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Regular quality testing</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Timely delivery service</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Competitive pricing</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> 24/7 customer support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div style="background: linear-gradient(135deg, var(--light) 0%, var(--accent) 100%); border-radius: 15px; padding: 40px; height: 100%;">
+                        <h3 class="mb-4">Our Mission</h3>
+                        <p class="mb-4">To provide clean, safe, and affordable water to every household and business in Lagos State, contributing to better health and quality of life.</p>
+                        
+                        <h3 class="mb-4">Our Vision</h3>
+                        <p>To be the most trusted and reliable water production and treatment company in Lagos State, known for excellence and innovation.</p>
+                        
+                        <div class="mt-5 p-4 bg-white rounded" style="border-left: 4px solid var(--primary);">
+                            <h5>Quality Assurance</h5>
+                            <p>All our water products undergo rigorous testing and meet WHO and NAFDAC standards for drinking water quality.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Customer Testimonials</h2>
+                <p class="lead">What our customers say about our services</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p>"Royal Son Enterprise has been our water supplier for over 2 years. The water quality is exceptional and the delivery service is always on time. Highly recommended!"</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <div>
+                                <h5>Adebayo Johnson</h5>
+                                <p class="mb-0">Residential Customer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p>"As a restaurant owner, water quality is crucial for our business. Royal Son Enterprise provides us with consistently clean water, and their commercial solutions have saved us time and money."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <div>
+                                <h5>Fatima Alabi</h5>
+                                <p class="mb-0">Restaurant Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p>"The water treatment service transformed our office water quality. Our employees are much happier with the taste and clarity of water. Excellent customer service too!"</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <div>
+                                <h5>Chinedu Okonkwo</h5>
+                                <p class="mb-0">Office Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="lead">Get in touch for water solutions and services</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-control">
+                                    <option>Select Service</option>
+                                    <option>Pure Drinking Water</option>
+                                    <option>Water Treatment</option>
+                                    <option>Home Delivery</option>
+                                    <option>Commercial Solutions</option>
+                                    <option>Maintenance</option>
+                                    <option>Water Filtration</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Tell us about your water needs" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ps-lg-5">
+                        <h3>Get In Touch</h3>
+                        <p class="lead mb-4">We're here to serve you with the best water solutions</p>
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Our Address</h5>
+                                <p class="mb-0">Shop FF3, First Floor, Omo Owo Plaza, Market Street, Odun Ade, Lagos State</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Call Us</h5>
+                                <p class="mb-0">08068375672</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email Us</h5>
+                                <p class="mb-0">Ericobidinma4@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <div class="feature-icon me-3">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Business Hours</h5>
+                                <p class="mb-0">Mon-Sat: 8AM - 8PM<br>Sun: 9AM - 6PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-5 p-4 bg-light rounded">
+                            <h5>Emergency Water Service</h5>
+                            <p>Need urgent water supply? Call our 24-hour emergency line: <strong>08068375672</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="text-white mb-4">Royal Son<span style="color: var(--accent);"> Enterprise</span></h3>
+                    <p>Providing clean, safe, and affordable water solutions to homes and businesses in Lagos State since our establishment.</p>
+                    <div class="mt-4">
+                        <a href="https://www.instagram.com/bigaben23?igsh=MWVzOWkyZm5xeWN2dQ==" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/ericobidinma?mibextid=kFxxJD" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com/ogaranya23?t=kxQeINucM1uidaHM14WFxQ&s=09" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Services</h5>
+                    <a href="#" class="footer-link">Pure Drinking Water</a>
+                    <a href="#" class="footer-link">Water Treatment</a>
+                    <a href="#" class="footer-link">Home Delivery</a>
+                    <a href="#" class="footer-link">Commercial Solutions</a>
+                    <a href="#" class="footer-link">Maintenance</a>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#services" class="footer-link">Services</a>
+                    <a href="#gallery" class="footer-link">Gallery</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h5 class="text-white mb-4">Water Quality Report</h5>
+                    <p>Download our latest water quality testing report to see our commitment to excellence.</p>
+                    <button class="btn btn-outline-light">Download Report</button>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <p>&copy; 2023 Royal Son Enterprise. All rights reserved. Providing clean water solutions in Lagos State.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    const speed = 200;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            setTimeout(animateCounters, 500);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for contacting Royal Son Enterprise! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
